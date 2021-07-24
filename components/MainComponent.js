@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Directory from './DirectoryComponent';
 import ClassInfo from './ClassInfoComponent';
+import Contact from './ContactComponent';
+import Apps from './AppsComponent';
 import Constants from 'expo-constants';
 import { View, Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -44,10 +46,46 @@ const HomeNavigator = createStackNavigator(
     }
 );
 
+const ContactNavigator = createStackNavigator(
+    {
+        Contact: { screen: Contact }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#E6DFD7'
+            },
+            headerTintColor: '#B9936D',
+            headerTitleStyle: {
+                color: '#B9936D'
+            }
+        }
+    }
+);
+
+const AppsNavigator = createStackNavigator(
+    {
+        Apps: { screen: Apps }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#E6DFD7'
+            },
+            headerTintColor: '#B9936D',
+            headerTitleStyle: {
+                color: '#B9936D'
+            }
+        }
+    }
+);
+
 const MainNavigator = createDrawerNavigator(
     {
-        Home: { screen: HomeNavigator },
-        Directory: { screen: DirectoryNavigator }
+        "Home": { screen: HomeNavigator },
+        "Classes": { screen: DirectoryNavigator },
+        "Apps": { screen: AppsNavigator },
+        "Contact Us": { screen: ContactNavigator }
     },
     {
         drawerBackgroundColor: '#7A5C4A'
