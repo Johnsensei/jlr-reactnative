@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { FlatList, TouchableOpacity } from 'react-native';
+import { ListItem, Card, Text } from 'react-native-elements';
 import { LANGUAGECLASSES } from '../shared/languageclasses';
 
 class Directory extends Component {
@@ -19,12 +19,15 @@ class Directory extends Component {
         const { navigate } = this.props.navigation;
         const renderDirectoryItem = ({item}) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    onPress={() => navigate("ClassInfo", { languageClassId: item.id})}
-                    leftAvatar={{ source: require('./images/class-session.png')}}
-                />
+                <TouchableOpacity
+                    onPress={() => navigate("ClassInfo", { languageClassId: item.id})}>
+                    <Card
+                        image={item.image}>
+                        <Text style={{margin: 10}}>
+                            {item.description}
+                        </Text>
+                    </Card>
+                </TouchableOpacity>
             );
         };
 
