@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Image } from 'react-native-elements';
 import { LANGUAGECLASSES } from '../shared/languageclasses';
 import { APPS } from '../shared/apps';
 import { VIDEOS } from '../shared/videos';
@@ -9,8 +9,7 @@ function RenderItem ({item}){
     if (item){
         return(
             <Card
-                featuredTitle={item.name}
-                image={require('./images/class-session.png')}
+                image={item.image}
             >
                 <Text style={{margin: 10}}>
                     {item.description}
