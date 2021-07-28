@@ -130,11 +130,61 @@ const ContactNavigator = createStackNavigator(
 
 const MainNavigator = createDrawerNavigator(
     {
-        "Home": { screen: HomeNavigator },
-        "Classes": { screen: DirectoryNavigator },
-        "Apps": { screen: AppsNavigator },
-        "Videos": { screen: VideosNavigator },
-        "Contact Us": { screen: ContactNavigator }
+        "Home": { screen: HomeNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='home'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } },
+        "Classes": { screen: DirectoryNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='list'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } },
+        "Apps": { screen: AppsNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='mobile'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } },
+        "Videos": { screen: VideosNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='film'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } },
+        "Contact Us": { screen: ContactNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='address-card'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } }
     },
     {
         drawerBackgroundColor: '#7A5C4A'
