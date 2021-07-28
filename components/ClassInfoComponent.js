@@ -13,6 +13,8 @@ function RenderLanguageClass({languageClass}) {
                 <Text style={{margin: 10}}>
                     {languageClass.description}
                 </Text>
+                {/* TODO: add the array of topics learned. */}
+                {/* TODO: add the prerequisites */}
             </Card>
         );
     }

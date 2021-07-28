@@ -6,7 +6,8 @@ import Contact from './ContactComponent';
 import Apps from './AppsComponent';
 import Videos from './VideosComponent';
 import Constants from 'expo-constants';
-import { View, Platform } from 'react-native';
+import { View, Platform, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
@@ -16,15 +17,21 @@ const HomeNavigator = createStackNavigator(
         Home: { screen: Home }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='home'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -34,16 +41,21 @@ const DirectoryNavigator = createStackNavigator(
         ClassInfo: { screen: ClassInfo }
     },
     {
-        initialRouteName: 'Directory',
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='list'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -52,15 +64,21 @@ const AppsNavigator = createStackNavigator(
         Apps: { screen: Apps }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='mobile'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -69,15 +87,21 @@ const VideosNavigator = createStackNavigator(
         Videos: { screen: Videos }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='film'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -86,15 +110,21 @@ const ContactNavigator = createStackNavigator(
         Contact: { screen: Contact }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='address-card'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -125,5 +155,13 @@ class Main extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    stackIcon: {
+        marginLeft: 10,
+        color: 'black',
+        fontSize: 24
+    }
+});
 
 export default Main;
