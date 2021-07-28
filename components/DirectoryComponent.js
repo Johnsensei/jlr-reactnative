@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { ListItem, Card, Text } from 'react-native-elements';
+import { Card, Text } from 'react-native-elements';
 import { LANGUAGECLASSES } from '../shared/languageclasses';
 
 class Directory extends Component {

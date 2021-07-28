@@ -4,11 +4,29 @@ import Directory from './DirectoryComponent';
 import ClassInfo from './ClassInfoComponent';
 import Contact from './ContactComponent';
 import Apps from './AppsComponent';
+import Videos from './VideosComponent';
 import Constants from 'expo-constants';
 import { View, Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
+
+const HomeNavigator = createStackNavigator(
+    {
+        Home: { screen: Home }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#E6DFD7'
+            },
+            headerTintColor: '#B9936D',
+            headerTitleStyle: {
+                color: '#B9936D'
+            }
+        }
+    }
+);
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -29,9 +47,26 @@ const DirectoryNavigator = createStackNavigator(
     }
 );
 
-const HomeNavigator = createStackNavigator(
+const AppsNavigator = createStackNavigator(
     {
-        Home: { screen: Home }
+        Apps: { screen: Apps }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#E6DFD7'
+            },
+            headerTintColor: '#B9936D',
+            headerTitleStyle: {
+                color: '#B9936D'
+            }
+        }
+    }
+);
+
+const VideosNavigator = createStackNavigator(
+    {
+        Videos: { screen: Videos }
     },
     {
         defaultNavigationOptions: {
@@ -63,28 +98,12 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
-const AppsNavigator = createStackNavigator(
-    {
-        Apps: { screen: Apps }
-    },
-    {
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: '#E6DFD7'
-            },
-            headerTintColor: '#B9936D',
-            headerTitleStyle: {
-                color: '#B9936D'
-            }
-        }
-    }
-);
-
 const MainNavigator = createDrawerNavigator(
     {
         "Home": { screen: HomeNavigator },
         "Classes": { screen: DirectoryNavigator },
         "Apps": { screen: AppsNavigator },
+        "Videos": { screen: VideosNavigator },
         "Contact Us": { screen: ContactNavigator }
     },
     {

@@ -1,5 +1,4 @@
 export const VIDEOS = [
-//If I get an error on the images, try /assets
     {
         id: 0,
         name: "Japanese Linguistics Taught in English 1",

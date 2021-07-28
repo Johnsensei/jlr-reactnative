@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { Card, Text } from 'react-native-elements';
-import { APPS } from '../shared/apps';
+import { VIDEOS } from '../shared/videos';
 
-class Apps extends Component {
+class Videos extends Component {
     constructor(props){
         super(props);
         this.state = {
-            apps: APPS
+            videos: VIDEOS
         };
     }
     
     static navigationOptions = {
-        title: "Apps"
+        title: "Videos"
     };
     
     render(){
-        const renderAppsItem = ({item}) => {
+        const renderVideosItem = ({item}) => {
                 return (
                     <Card
                         image={item.image}>
@@ -30,12 +30,12 @@ class Apps extends Component {
 
         return (
             <FlatList
-                data={this.state.apps}
-                renderItem={renderAppsItem}
+                data={this.state.videos}
+                renderItem={renderVideosItem}
                 keyExtractor={item => item.id.toString()}
             />
         );
     };
 }
 
-export default Apps;
+export default Videos;
