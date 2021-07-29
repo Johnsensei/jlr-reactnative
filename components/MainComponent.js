@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Directory from './DirectoryComponent';
 import ClassInfo from './ClassInfoComponent';
+import Registration from './RegistrationComponent';
 import Contact from './ContactComponent';
 import Apps from './AppsComponent';
 import Videos from './VideosComponent';
@@ -52,6 +53,29 @@ const DirectoryNavigator = createStackNavigator(
             },
             headerLeft: <Icon
                 name='list'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
+const RegistrationNavigator = createStackNavigator(
+    {
+        Registration: { screen: Registration }
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#E6DFD7'
+            },
+            headerTintColor: '#B9936D',
+            headerTitleStyle: {
+                color: '#B9936D'
+            },
+            headerLeft: <Icon
+                name='calendar'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -162,6 +186,17 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='list'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } },
+        "Class Registration": { screen: RegistrationNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='calendar'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
