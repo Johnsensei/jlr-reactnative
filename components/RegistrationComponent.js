@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet,
-    Picker, Button, TextInput } from 'react-native';
+    Picker, Button, TextInput, Modal } from 'react-native';
 
 class Registration extends Component {
 
@@ -12,8 +12,13 @@ class Registration extends Component {
             selectedTerm: "",
             studentName: "",
             studentAge: "",
-            studentEmail: ""
+            studentEmail: "",
+            showModal: false
         };
+    }
+
+    toggleModal(){
+        this.setState({showModal: !this.state.showModal})
     }
 
     static navigationOptions = {
@@ -22,6 +27,10 @@ class Registration extends Component {
 
     handleReservation() {
         console.log(JSON.stringify(this.state));
+        this.toggleModal();
+    }
+
+    resetForm(){
         this.setState({
             selectedClass: "",
             selectedTerm: "",
@@ -71,6 +80,7 @@ class Registration extends Component {
                 <View style={styles.formRow}>
                     <TextInput 
                         style={styles.formItem}
+                        value={this.state.studentName}
                         selectedValue={this.state.studentName}
                         onChangeText={itemValue => this.setState({studentName: itemValue})}
                         placeholder="First Last"/>
@@ -81,6 +91,7 @@ class Registration extends Component {
                 <View style={styles.formRow}>
                     <TextInput 
                         style={styles.formItem}
+                        value={this.state.studentAge}
                         selectedValue={this.state.studentAge}
                         onChangeText={itemValue => this.setState({studentAge: itemValue})}
                         placeholder="Must be 18 or older to register."
@@ -92,18 +103,62 @@ class Registration extends Component {
                 <View style={styles.formRow}>
                     <TextInput 
                         style={styles.formItem}
+                        value={this.state.studentEmail}
                         selectedValue={this.state.studentEmail}
                         onChangeText={itemValue => this.setState({studentEmail: itemValue})}
                         placeholder="example@domain.com"/>
                 </View>
                 <View style={styles.formRow}>
                     <Button
-                        onPress={() => this.handleReservation()}
+                        onPress={() => this.toggleModal()}
                         title='Sign Up'
                         color='#B9936D'
                         accessibilityLabel='Tap me to register for a class.'
                     />
                 </View>
+                <Modal
+                    animationType={'slide'}
+                    transparent={false}
+                    visible={this.state.showModal}
+                    onRequestClose={() => this.toggleModal()}
+                >
+                    <View style={styles.modal}>
+                        <Text style={styles.modalTitle}>Student Registration Details</Text>
+                        <Text style={styles.modalText}>
+                            Student Name: {this.state.studentName}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Student Age: {this.state.studentAge}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Student Email: {this.state.studentEmail}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Class: {this.state.selectedClass}
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Term: {this.state.selectedTerm}
+                        </Text>
+                        
+                        <Button
+                            onPress={() => {
+                                this.handleReservation();
+                                this.resetForm();
+                            }}
+                            color='#B9936D'
+                            title='See You In Class'
+                        />
+                        <View><Text></Text></View>
+                        <Button
+                            onPress={() => {
+                                this.resetForm();
+                                this.toggleModal();
+                            }}
+                            color='#B9936D'
+                            title='Start Over'
+                        />
+                    </View>
+                </Modal>
             </ScrollView>
         );
     }
@@ -123,6 +178,22 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
+    },
+    modal: { 
+        justifyContent: 'center',
+        margin: 20
+    },
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        backgroundColor: '#B9936D',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 20
+    },
+    modalText: {
+        fontSize: 18,
+        margin: 10
     }
 });
 

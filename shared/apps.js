@@ -2,7 +2,7 @@ export const APPS = [
     {
         id: 0,
         name: "Hiragana Breaker",
-        image: require('./images/hb-placeholder.png'),
+        image: require('./images/hb-title.png'),
         featured: true,
         description: "Don't just learn hiragana. Break them!",
         video: "https://www.youtube.com/embed/l1KmWN3j5Z4"

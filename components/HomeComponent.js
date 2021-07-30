@@ -37,12 +37,15 @@ class Home extends Component {
     render(){
         return(
             <ScrollView>
+                {/* TODO: Add JLR banner logo to the top. */}
                 <RenderItem
                     item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
                 />
+                {/* TODO: Make clickable to open the app store. */}
                 <RenderItem
                     item={this.state.apps.filter(app => app.featured)[0]}
                 />
+                {/* TODO: Link to and play a YouTube video. */}
                 <RenderItem
                     item={this.state.videos.filter(video => video.featured)[0]}
                 />
