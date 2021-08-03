@@ -37,7 +37,13 @@ class Home extends Component {
     render(){
         return(
             <ScrollView>
-                {/* TODO: Add JLR banner logo to the top. */}
+                <View style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Image source={require('./images/JLR_Horz.png')} style={{ width: 250, height: 63, margin: 20 }}/>
+                </View>
                 <RenderItem
                     item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
                 />
