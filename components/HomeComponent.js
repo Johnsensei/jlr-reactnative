@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, Image } from 'react-native-elements';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { LANGUAGECLASSES } from '../shared/languageclasses';
@@ -7,7 +7,28 @@ import { APPS } from '../shared/apps';
 import { VIDEOS } from '../shared/videos';
 
 function RenderItem ({item}){
+    const openGooglePlayStore = () => {
+        Linking.openURL(`market://details?id=${item.appID}`);
+      };
+    
+    const openIOSAppStore = () => {
+        Linking.openURL(`itms-apps://itunes.apple.com/us/app/apple-store/${item.appID}?mt=8`)
+    }
+    
     if (item){
+
+        if(item.appID){
+            return(
+                <TouchableOpacity
+                onPress={(Platform.OS ==='ios') ? openIOSAppStore : openGooglePlayStore}>
+                <Card
+                    image={item.image}>
+                    <Text style={{margin: 10}}>
+                        {item.description}
+                    </Text>
+                </Card>
+            </TouchableOpacity>);
+        }
 
         if(item.videoID){
             return(
