@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { FlatList } from 'react-native';
 import { Card, Text } from 'react-native-elements';
+import YoutubePlayer from 'react-native-youtube-iframe';
 import { VIDEOS } from '../shared/videos';
 
 class Videos extends Component {
@@ -18,8 +20,14 @@ class Videos extends Component {
     render(){
         const renderVideosItem = ({item}) => {
                 return (
-                    <Card
-                        image={item.image}>
+                    <Card style={{height: 100}}>
+                        <View>
+                        <YoutubePlayer 
+                            height={200}
+                            play={false}
+                            videoId={item.videoID}
+                        />
+                        </View>
                         <Text style={{margin: 10}}>
                             {item.description}
                         </Text>
