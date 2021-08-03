@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 import { APPS } from '../shared/apps';
 
@@ -14,18 +14,31 @@ class Apps extends Component {
     static navigationOptions = {
         title: "Apps"
     };
-    
+
     render(){
+        
+
         const renderAppsItem = ({item}) => {
-                return (
+            const openGooglePlayStore = () => {
+                Linking.openURL(`market://details?id=${item.appID}`);
+              };
+            
+            const openIOSAppStore = () => {
+                Linking.openURL(`itms-apps://itunes.apple.com/us/app/apple-store/${item.appID}?mt=8`)
+            }
+            
+            return (
+                <TouchableOpacity
+                    onPress={(Platform.OS ==='ios') ? openIOSAppStore : openGooglePlayStore}>
                     <Card
                         image={item.image}>
                         <Text style={{margin: 10}}>
                             {item.description}
                         </Text>
                     </Card>
+                </TouchableOpacity>
 
-                );
+            );
         };
 
         return (

@@ -54,6 +54,7 @@ class Home extends Component {
     render(){
         return(
             <ScrollView>
+                {/* I prefer the layout without the header logo, but leaving the code here for just in case. */}
                 {/* <View style={{
                     flex: 1,
                     justifyContent: 'center',
