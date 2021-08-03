@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Card, Image } from 'react-native-elements';
+import YoutubePlayer from 'react-native-youtube-iframe';
 import { LANGUAGECLASSES } from '../shared/languageclasses';
 import { APPS } from '../shared/apps';
 import { VIDEOS } from '../shared/videos';
 
 function RenderItem ({item}){
     if (item){
+
+        if(item.videoID){
+            return(
+                <Card style={{height: 100}}>
+                    <View>
+                        <YoutubePlayer 
+                            height={200}
+                            play={false}
+                            videoId={item.videoID}
+                        />
+                    </View>
+                    <Text style={{margin: 10}}>
+                        {item.description}
+                    </Text>
+            </Card>);
+        }
         return(
             <Card
                 image={item.image}
@@ -37,13 +54,13 @@ class Home extends Component {
     render(){
         return(
             <ScrollView>
-                <View style={{
+                {/* <View style={{
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
                     <Image source={require('./images/JLR_Horz.png')} style={{ width: 250, height: 63, margin: 20 }}/>
-                </View>
+                </View> */}
                 <RenderItem
                     item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
                 />
