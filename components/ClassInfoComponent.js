@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
 import { LANGUAGECLASSES } from "../shared/languageclasses";
 
@@ -14,6 +14,10 @@ function RenderLanguageClass({languageClass}) {
                     {languageClass.description}
                 </Text>
                 {/* TODO: add the array of topics learned. */}
+                <FlatList
+                    data={languageClass.content}
+                    renderItem={({item}) => <Text>{item}</Text>}
+                    />
                 {/* TODO: add the prerequisites */}
             </Card>
         );
