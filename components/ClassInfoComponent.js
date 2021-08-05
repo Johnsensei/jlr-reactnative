@@ -13,12 +13,10 @@ function RenderLanguageClass({languageClass}) {
                 <Text style={{margin: 10}}>
                     {languageClass.description}
                 </Text>
-                {/* TODO: add the array of topics learned. */}
                 <FlatList
                     data={languageClass.content}
                     renderItem={({item}) => <Text>{item}</Text>}
                     />
-                {/* TODO: add the prerequisites */}
             </Card>
         );
     }
@@ -38,7 +36,15 @@ class ClassInfo extends Component {
     render(){
         const languageClassId = this.props.navigation.getParam("languageClassId");
         const languageClass = this.state.languageClasses.filter(languageClass => languageClass.id === languageClassId)[0];
-        return <RenderLanguageClass languageClass={languageClass} />;
+
+        return (
+            <View>
+                <RenderLanguageClass languageClass={languageClass} />
+                <Text style={{fontSize: 20, margin: 10, alignSelf: 'center'}}>Prerequisites</Text>
+                <Text style={{fontSize: 14, margin: 10, alignSelf: 'center'}}>{languageClass.prereqs}</Text>
+                {/* TODO: Add a button to register for this class. */}
+            </View>
+        );
     }
 }
 
