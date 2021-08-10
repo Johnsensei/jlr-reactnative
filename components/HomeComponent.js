@@ -8,8 +8,6 @@ import { APPS } from '../shared/apps';
 import { VIDEOS } from '../shared/videos';
 
 function RenderItem ({item}){
-    
-    // const { navigate } = this.props.navigation;
 
     if (item){
 
@@ -23,6 +21,7 @@ function RenderItem ({item}){
             }
 
             return(
+                
                 <TouchableOpacity
                 onPress={(Platform.OS ==='ios') ? openIOSAppStore : openGooglePlayStore}>
                 <Card
@@ -50,16 +49,12 @@ function RenderItem ({item}){
             </Card>);
         }
         return(
-            // TODO: Add Touchable Opacity that takes user to Class Info Component.
-            // <TouchableOpacity
-            //     onPress={() => navigate("ClassInfo", { languageClassId: item.id})}>
                 <Card
                     image={item.image}>
                     <Text style={{margin: 10}}>
                         {item.description}
                     </Text>
                 </Card>
-            // </TouchableOpacity>
         );
     }
     return <View />
@@ -92,12 +87,13 @@ class Home extends Component {
                 }}>
                     <Image source={require('./images/JLR_Horz.png')} style={{ width: 250, height: 63, margin: 20 }}/>
                 </View> */}
-                {/* <TouchableOpacity
-                    onPress={() => navigate("ClassInfo", { languageClassId: item.id})}> */}
+
+                <TouchableOpacity
+                    onPress={() => navigate("ClassInfo", { languageClassId: 0})}>
                     <RenderItem
                         item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
                     />
-                {/* </TouchableOpacity> */}
+                </TouchableOpacity>
                 <RenderItem
                     item={this.state.apps.filter(app => app.featured)[0]}
                 />

@@ -16,24 +16,29 @@ import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
     {
-        Home: { screen: Home }
+        Home: { screen: Home,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='home'
+                    type='font-awesome'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+         },
+        ClassInfo: { screen: ClassInfo }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        initialRouteName: 'Home',
+        defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#E6DFD7'
             },
             headerTintColor: '#B9936D',
             headerTitleStyle: {
                 color: '#B9936D'
-            },
-            headerLeft: <Icon
-                name='home'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
+            }
+        }
     }
 );
 
