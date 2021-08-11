@@ -89,12 +89,9 @@ class Home extends Component {
                     <Image source={require('./images/JLR_Horz.png')} style={{ width: 250, height: 63, margin: 20 }}/>
                 </View> */}
 
-                {/* <TouchableOpacity
-                    onPress={() => navigate("ClassInfo", { languageClassId: 0})}> */}
-                    <RenderItem
-                        item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
-                    />
-                {/* </TouchableOpacity> */}
+                <RenderItem
+                    item={this.state.languageClasses.filter(languageClass => languageClass.featured)[0]}
+                />
                 <RenderItem
                     item={this.state.apps.filter(app => app.featured)[0]}
                 />

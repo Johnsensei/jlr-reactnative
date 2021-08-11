@@ -7,6 +7,7 @@ class Registration extends Component {
     constructor(props) {
         super(props);
 
+        // TODO: Get a selected class from props if it exists. "" if it doesn't.
         this.state = {
             selectedClass: "",
             selectedTerm: "",
@@ -40,6 +41,8 @@ class Registration extends Component {
         });
     }
 
+    // TODO: Add form validation.
+    // TODO: Add profile picture.
     render() {
         return (
             <ScrollView>
@@ -73,7 +76,7 @@ class Registration extends Component {
                     </Picker>
                 </View>
 
-                {/* TODO: Start here on adding fields for student name and age. */}
+                
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Student Name</Text>
                 </View>

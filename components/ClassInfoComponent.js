@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 import { LANGUAGECLASSES } from "../shared/languageclasses";
 
 function RenderLanguageClass({languageClass}) {
@@ -33,16 +33,27 @@ class ClassInfo extends Component {
     static navigationOptions = {
         title: "Class Information"
     }
+
+    
+
     render(){
         const languageClassId = this.props.navigation.getParam("languageClassId");
         const languageClass = this.state.languageClasses.filter(languageClass => languageClass.id === languageClassId)[0];
+        const { navigate } = this.props.navigation;
 
         return (
             <View>
                 <RenderLanguageClass languageClass={languageClass} />
                 <Text style={{fontSize: 20, margin: 10, alignSelf: 'center'}}>Prerequisites</Text>
                 <Text style={{fontSize: 14, margin: 10, alignSelf: 'center'}}>{languageClass.prereqs}</Text>
-                {/* TODO: Add a button to register for this class. */}
+                {/* TODO: feed the selected class to the Registration component. */}
+                <View style={{margin: 20, marginRight: 100,marginLeft: 100}}>
+                    <Button 
+                        title="Register for this Class"
+                        buttonStyle={{backgroundColor: '#B9936D'}}
+                        onPress={() => navigate("Registration", { selectedClass: languageClass.name})}
+                    />
+                </View>
             </View>
         );
     }
