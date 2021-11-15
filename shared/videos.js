@@ -6,7 +6,7 @@ export const VIDEOS = [
         video: "https://www.youtube.com/embed/gBq25pTaNIo",
         videoID: 'gBq25pTaNIo',
         featured: true,
-        description: "Hiragana phonetics - Part 1"
+        description: "Rendaku - Part 1"
     },
     {
         id: 1,
@@ -15,6 +15,6 @@ export const VIDEOS = [
         video: "https://www.youtube.com/embed/gWynAltu12Q",
         videoID: 'gWynAltu12Q',
         featured: false,
-        description: "Hiragana phonetics - Part 2"
+        description: "Rendaku - Part 2"
     }
 ];

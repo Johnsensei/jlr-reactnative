@@ -7,9 +7,9 @@ class Registration extends Component {
     constructor(props) {
         super(props);
 
-        // TODO: Get a selected class from props if it exists. "" if it doesn't.
         this.state = {
-            selectedClass: "",
+
+            selectedClass: this.props.navigation.getParam("selectedClass"),
             selectedTerm: "",
             studentName: "",
             studentAge: "",
@@ -42,7 +42,6 @@ class Registration extends Component {
     }
 
     // TODO: Add form validation.
-    // TODO: Add profile picture.
     render() {
         return (
             <ScrollView>
@@ -149,7 +148,7 @@ class Registration extends Component {
                                 this.resetForm();
                             }}
                             color='#B9936D'
-                            title='See You In Class'
+                            title='Tap Here to Complete Registration'
                         />
                         <View><Text></Text></View>
                         <Button

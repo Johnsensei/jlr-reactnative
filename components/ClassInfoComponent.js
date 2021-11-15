@@ -46,7 +46,6 @@ class ClassInfo extends Component {
                 <RenderLanguageClass languageClass={languageClass} />
                 <Text style={{fontSize: 20, margin: 10, alignSelf: 'center'}}>Prerequisites</Text>
                 <Text style={{fontSize: 14, margin: 10, alignSelf: 'center'}}>{languageClass.prereqs}</Text>
-                {/* TODO: feed the selected class to the Registration component. */}
                 <View style={{margin: 20, marginRight: 100,marginLeft: 100}}>
                     <Button 
                         title="Register for this Class"
